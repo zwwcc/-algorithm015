@@ -19,12 +19,23 @@
   * 树种任意节点的总值 >= 其节点的值
   * 索引为i的左儿子 是 2*i+1 ,右儿子 2*i+2，节点为i的父节点为（i-1）/2
   * 优先队列 priority queue
-  * heapfiUp
   ```
+  heapfiUp:
    while(i > 0 insertValue > heap[parent(i)]) {
        heap[i] = heap[parent(i)]
        i = parent(i);
    }
    heap[i] = insertValue;
+   heapfiDown:
+   temp = heap[i];
+   while(kthChild(i,1) < heapSize) {
+      child = maxChild(i);
+      if (temp > heap[child]){
+        break;
+      }
+      heap[i] = heap[child];
+      i = child;
+   }
+   heap[i] = temp;
   ```
 ## HashMap小结
